@@ -18,21 +18,32 @@ export default async function Home() {
 
   // console.log(">>>data:", await res.json());  
 
-  const res = await sendRequest<IBackendRes<ITrackTop[]>>({
+  const chill = await sendRequest<IBackendRes<ITrackTop[]>>({
     url: "http://localhost:8000/api/v1/tracks/top",
     method: "POST",
-    body: {category: "CHILL", limit: 1}, 
-
+    body: {category: "CHILL", limit: 10}
   });
 
-  console.log(">>>data:", res?.data[0]?.title);  
+  const workout = await sendRequest<IBackendRes<ITrackTop[]>>({
+    url: "http://localhost:8000/api/v1/tracks/top",
+    method: "POST",
+    body: {category: "WORKOUT", limit: 10}
+  });
+
+  const party = await sendRequest<IBackendRes<ITrackTop[]>>({
+    url: "http://localhost:8000/api/v1/tracks/top",
+    method: "POST",
+    body: {category: "PARTY", limit: 10}
+  });
+  
+  //console.log("Chill:", chill?.data?.[0]?.title);
 
   return (
     <>
       <Container>
-        <MainSlider/>
-        <MainSlider/>
-        <MainSlider/>
+        <MainSlider data={chill?.data ?? []}/>
+        <MainSlider data={workout?.data ?? []}/>
+        <MainSlider data={party?.data ?? []}/>
       </Container>
     </>
   );

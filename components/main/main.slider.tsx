@@ -9,7 +9,13 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import Divider from '@mui/material/Divider';
 
-export default function MainSlider() {
+interface IProps {
+    data: ITrackTop[]
+}
+
+export default function MainSlider(props: IProps) {
+
+    //console.log(">>>>>>>>>Prop data:", props.data[0].title);
     const NextArrow = (props: any) => {
         return (
             <Button variant="outlined"
