@@ -41,9 +41,9 @@ export default async function Home() {
   return (
     <>
       <Container>
-        <MainSlider data={chill?.data ?? []}/>
-        <MainSlider data={workout?.data ?? []}/>
-        <MainSlider data={party?.data ?? []}/>
+        <MainSlider customClass="first-slider" data={chill?.data ?? []} title="Chill"/>
+        <MainSlider data={workout?.data ?? []} title="Workout"/>
+        <MainSlider customClass="last-slider" data={party?.data ?? []} title="Party"/>
       </Container>
     </>
   );
